@@ -1,5 +1,14 @@
 # Test API Server
 
+## Init Setting
+
+```shell
+// 종속성 설치
+yarn
+// 서버 가동
+yarn run start
+```
+
 ## POST /api/verfiy/signin
 
 ### Request
