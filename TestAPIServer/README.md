@@ -27,7 +27,7 @@
 **Headers**
 
 |Key|Type|Description|Required|
-|-|-|-|
+|-|-|-|-|
 |Authorization|String|인증 토큰|O|
 
 ### Response
@@ -35,7 +35,7 @@
 **Key**
 
 |Name|Type|Description|
-|-|-|-|-|
+|-|-|-|
 |code|Number|통신 결과 코드|
 |users|Array<User.Id>|모든 유저 리스트|
 
