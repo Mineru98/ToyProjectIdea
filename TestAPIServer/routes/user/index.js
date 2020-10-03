@@ -51,6 +51,7 @@ router.post("/apply/user", (req, res) => {
 		} else {
 			let checkSum = false;
 			const obj = JSON.parse(data);
+			
 			for (let item of await obj.users) {
 				if (item.username == username) {
 					checkSum = true;
@@ -59,16 +60,23 @@ router.post("/apply/user", (req, res) => {
 			}
 			
 			if (!checkSum) {
-				obj.push({
+				obj.users.push({
 					id: obj.users.length + 1,
 					username,
 					password
-				})
+				});
+				const json = JSON.stringify(obj);
+				fs.writeFile(path.resolve(__dirname, "../../data/Users.json"), json, (err) => {
+					if (err) {
+						console.log(err);
+						return res.status(402).json({ code: 402 });
+					} else {
+						return res.status(201).json({ code: 201 });
+					}
+				});
+			} else {
+				return res.status(209).json({ code: 209 });
 			}
-
-			const json = JSON.stringify(obj);
-			fs.writeFile(path.resolve(__dirname, "../../data/Users.json"), json);
-			res.status(201).json({ code: 201 });
 		}
 	});
 });
